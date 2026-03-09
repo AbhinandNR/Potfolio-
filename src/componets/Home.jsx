@@ -5,7 +5,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col overflow-x-hidden">
 
       {/* ================= HERO ================= */}
       <section
