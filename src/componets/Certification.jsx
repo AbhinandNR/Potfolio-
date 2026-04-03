@@ -1,26 +1,36 @@
 import React from 'react'
 
-const certificate = [{
+const certificate = [
+  {
+    title: "DevOps Fundamentals",
+    desc: "Certified by IBM Developer Skills Network - Issued by Etrain Education in March 2026. Gained robust knowledge in DevOps culture, CI/CD, and Cloud integrations.",
+    date: "Mar 2026",
+    tag: "IBM"
+  },
+  {
+    title: "AWS Academy Graduate - Cloud Foundations",
+    desc: "Issued by Amazon Web Services Training and Certification. Foundational knowledge of AWS Cloud concepts, security, and architecture.",
+    date: "2025",
+    tag: "AWS"
+  },
+  {
+      title:"Introduction to Intelligent Virtual Agents (IVAs) with IBM watsonx Assistant",
+      desc:"Issued by IBM",
+      date: "2024",
+      tag: "AI"
+  },
+  {
+      title:"IBM watsonx.ai Technical Essentials",
+      desc:"Issued by IBM",
+      date: "2024",
+      tag: "AI"
+  },
+  {
     title: "CCSA",
-    desc: "Certified Cloud Security Associate by Red Team Hacker Accademy"
-},
-{
-    title: "AI bignner",
-    desc: "Certification by OSPF, ULRC"
-},
-{
-    title: "AWS Academy Graduate - Cloud Foundations ",
-    desc: "Issued by Amazon Web Services Training and Certification"
-},
-{
-    title:"Introduction to Intelligent Virtual Agents (IVAs) with IBM watsonx Assistant",
-    desc:"Issued by IBM"
-},
-{
-    title:"IBM watsonx.ai Technical Essentials",
-    desc:"Issued by IBM"
-}
-
+    desc: "Certified Cloud Security Associate by Red Team Hacker Academy",
+    date: "2023",
+    tag: "Security"
+  }
 ]
 
 const Certification = () => {
@@ -28,67 +38,72 @@ const Certification = () => {
 
 
         <section
-            id="projects"
+            id="certificates"
             className="
-        py-44 px-6
-        bg-gradient-to-br
-        from-indigo-50
-        via-purple-50
-        to-blue-50
+        py-40 px-6
+        min-h-screen
+        bg-[#F9FAFB]
+        relative
       "
         >
-            <div className="max-w-7xl mx-auto text-center">
+            {/* Background Blob */}
+            <div className="absolute top-20 right-10 w-96 h-96 bg-[#4F8EF7]/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+            <div className="max-w-5xl mx-auto relative z-10">
 
                 {/* Heading */}
-                <h2 className="text-6xl font-bold mb-8 text-slate-800">
-                    Certificates
-                </h2>
+                <div className="text-center mb-24">
+                    <h2 className="text-5xl md:text-6xl font-extrabold mb-6 text-[#1F2937] tracking-tight">
+                        Experience & <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4F8EF7] to-[#34D399]">Certifications</span>
+                    </h2>
+                    <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+                        A continuous journey of learning and solidifying Cloud and DevOps expertise.
+                    </p>
+                </div>
 
-                <p className="text-slate-500 text-lg mb-24">
-                    Verified skills through industry-recognized certifications and achievements.
-                </p>
-
-                {/* Grid */}
-                <div className="grid md:grid-cols-3 gap-20">
+                {/* Timeline Layout */}
+                <div className="relative border-l-2 border-[#4F8EF7]/30 ml-4 md:ml-8 space-y-12 pb-12">
 
                     {certificate.map((p, index) => (
 
-
                         <div
                             key={index}
-                            className="
-                backdrop-blur-lg
-                bg-white/70
-                border border-white/40
-                p-12
-                rounded-3xl
-                shadow-xl
-                hover:shadow-2xl
-                hover:-translate-y-4
-                transition-all
-                duration-500
-                text-left
-              "
+                            className="relative pl-8 md:pl-12 group"
                         >
-                            <h3 className="text-2xl font-semibold text-indigo-700 mb-6">
-                                {p.title}
-                            </h3>
+                            {/* Dot indicator */}
+                            <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-[#4F8EF7] border-4 border-[#F9FAFB] group-hover:scale-150 group-hover:bg-[#34D399] transition-all duration-300 shadow-sm"></div>
 
-                            <p className="text-slate-600 leading-relaxed text-lg">
-                                {p.desc}
-                            </p>
+                            {/* Content Card */}
+                            <div className="
+                                bg-white
+                                border border-gray-100
+                                p-8
+                                rounded-3xl
+                                shadow-sm
+                                hover:shadow-[0_10px_30px_rgba(79,142,247,0.1)]
+                                hover:border-[#4F8EF7]/30
+                                hover:-translate-y-1
+                                transition-all
+                                duration-500
+                                text-left
+                            ">
+                                <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+                                    <h3 className="text-xl md:text-2xl font-bold text-gray-900 group-hover:text-[#4F8EF7] transition-colors">
+                                        {p.title}
+                                    </h3>
+                                    <span className="inline-block px-4 py-1.5 rounded-full bg-[#4F8EF7]/10 text-[#4F8EF7] text-sm font-semibold whitespace-nowrap">
+                                        {p.date}
+                                    </span>
+                                </div>
 
-                            <button
-                                className="
-                  mt-10
-                  text-indigo-600
-                  font-medium
-                  hover:text-indigo-800
-                  transition
-                "
-                            >
-                                View Details →
-                            </button>
+                                <span className="inline-block mb-4 text-xs font-bold uppercase tracking-wider text-[#A78BFA]">
+                                    {p.tag}
+                                </span>
+
+                                <p className="text-gray-600 leading-relaxed">
+                                    {p.desc}
+                                </p>
+                            </div>
                         </div>
                     ))}
 

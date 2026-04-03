@@ -5,12 +5,12 @@ import { HiOutlineMail } from "react-icons/hi"
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white">
+    <footer className="bg-[#F9FAFB] text-gray-600 border-t border-gray-100">
 
       <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col items-center gap-6">
 
         {/* Name */}
-        <h2 className="text-xl font-semibold tracking-wide">
+        <h2 className="text-xl font-bold tracking-tight text-gray-900">
           Abhinand N R
         </h2>
 

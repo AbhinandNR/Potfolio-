@@ -12,8 +12,7 @@ import Certification from './componets/Certification';
 function App() {
   return (
     <BrowserRouter>
-      <div className="flex flex-col min-h-screen overflow-x-hidden">
-
+      <div className="flex flex-col min-h-screen bg-[#F9FAFB] text-gray-800 overflow-x-hidden selection:bg-[#4F8EF7]/30 font-sans relative">
         <Navbar />
 
         <div className="flex-1 pt-16">

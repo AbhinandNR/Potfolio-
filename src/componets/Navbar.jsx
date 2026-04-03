@@ -14,32 +14,32 @@ const Navbar = () => {
   }, [])
 
   const base =
-    "px-4 py-2 transition-all duration-300 rounded-lg hover:bg-white/10"
+    "px-4 py-2 transition-all duration-300 rounded-lg hover:bg-black/5"
 
   const active =
-    "text-white font-semibold bg-white/20 border-b-2 border-white"
+    "text-[#4F8EF7] font-semibold bg-[#4F8EF7]/10"
 
   return (
     <nav className={`w-full transition-all duration-300 ${
       isScrolled 
-        ? 'bg-black/95 backdrop-blur-md shadow-lg border-b border-gray-800' 
-        : 'bg-black shadow-md'
-    } text-white fixed top-0 z-50`}>
+        ? 'bg-white/80 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.05)] border-b border-gray-100' 
+        : 'bg-transparent'
+    } text-gray-700 fixed top-0 z-50`}>
 
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 sm:px-8 py-4">
 
         {/* Logo */}
-        <h1 className="text-2xl font-bold tracking-wide text-white hover:scale-105 transition-transform duration-300">
-          Abhinand
+        <h1 className="text-2xl font-bold tracking-tight text-gray-900 hover:scale-105 transition-transform duration-300">
+          Abhinand<span className="text-[#34D399]">.</span>
         </h1>
 
         {/* Links - Desktop */}
-        <ul className="hidden md:flex gap-4 text-lg">
+        <ul className="hidden md:flex gap-4 text-[15px] font-medium">
           <li>
             <NavLink
               to="/"
               className={({ isActive }) =>
-                `${base} ${isActive ? active : "hover:text-gray-400"}`
+                `${base} ${isActive ? active : "hover:text-gray-900"}`
               }
             >
               Home
@@ -50,7 +50,7 @@ const Navbar = () => {
             <NavLink
               to="/about"
               className={({ isActive }) =>
-                `${base} ${isActive ? active : "hover:text-gray-400"}`
+                `${base} ${isActive ? active : "hover:text-gray-900"}`
               }
             >
               About
@@ -61,7 +61,7 @@ const Navbar = () => {
             <NavLink
               to="/projects"
               className={({ isActive }) =>
-                `${base} ${isActive ? active : "hover:text-gray-400"}`
+                `${base} ${isActive ? active : "hover:text-gray-900"}`
               }
             >
               Projects
@@ -72,7 +72,7 @@ const Navbar = () => {
             <NavLink
               to="/contact"
               className={({ isActive }) =>
-                `${base} ${isActive ? active : "hover:text-gray-400"}`
+                `${base} ${isActive ? active : "hover:text-gray-900"}`
               }
             >
               Contact
@@ -83,25 +83,25 @@ const Navbar = () => {
             <NavLink
               to="/certification"
               className={({isActive})=>
-              `${base} ${isActive ? active:"hover:text-grey-300"}`}>
-                Certification
+              `${base} ${isActive ? active:"hover:text-gray-900"}`}>
+                Education & Experience
               </NavLink>
           </li>
         </ul>
 
         {/* Mobile menu button */}
         <button 
-          className="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-all duration-300"
+          className="md:hidden text-gray-700 p-2 rounded-lg hover:bg-gray-100 transition-all duration-300"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           <div className="relative w-6 h-6">
-            <span className={`absolute block h-0.5 w-6 bg-white transform transition-all duration-300 ${
+            <span className={`absolute block h-0.5 w-6 bg-gray-800 transform transition-all duration-300 ${
               isMenuOpen ? 'rotate-45 translate-y-0' : '-translate-y-2'
             }`}></span>
-            <span className={`absolute block h-0.5 w-6 bg-white transform transition-all duration-300 ${
+            <span className={`absolute block h-0.5 w-6 bg-gray-800 transform transition-all duration-300 ${
               isMenuOpen ? 'opacity-0' : 'translate-y-0'
             }`}></span>
-            <span className={`absolute block h-0.5 w-6 bg-white transform transition-all duration-300 ${
+            <span className={`absolute block h-0.5 w-6 bg-gray-800 transform transition-all duration-300 ${
               isMenuOpen ? '-rotate-45 translate-y-0' : 'translate-y-2'
             }`}></span>
           </div>
@@ -111,13 +111,13 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-black/95 backdrop-blur-md border-t border-gray-800 animate-in slide-in-from-top duration-300">
-          <ul className="flex flex-col py-4 px-6 space-y-2">
+        <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-gray-100 shadow-xl animate-in slide-in-from-top duration-300">
+          <ul className="flex flex-col py-4 px-6 space-y-2 font-medium">
             <li>
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                  `${base} ${isActive ? active : "hover:text-gray-300"} block w-full text-left`
+                  `${base} ${isActive ? active : "hover:text-gray-900"} block w-full text-left`
                 }
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -129,7 +129,7 @@ const Navbar = () => {
               <NavLink
                 to="/about"
                 className={({ isActive }) =>
-                  `${base} ${isActive ? active : "hover:text-gray-300"} block w-full text-left`
+                  `${base} ${isActive ? active : "hover:text-gray-900"} block w-full text-left`
                 }
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -141,7 +141,7 @@ const Navbar = () => {
               <NavLink
                 to="/projects"
                 className={({ isActive }) =>
-                  `${base} ${isActive ? active : "hover:text-gray-300"} block w-full text-left`
+                  `${base} ${isActive ? active : "hover:text-gray-900"} block w-full text-left`
                 }
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -153,7 +153,7 @@ const Navbar = () => {
               <NavLink
                 to="/contact"
                 className={({ isActive }) =>
-                  `${base} ${isActive ? active : "hover:text-gray-300"} block w-full text-left`
+                  `${base} ${isActive ? active : "hover:text-gray-900"} block w-full text-left`
                 }
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -165,10 +165,10 @@ const Navbar = () => {
               <NavLink
                 to="/certification"
                 className={({isActive})=>
-                `${base} ${isActive ? active:"hover:text-gray-400"} block w-full text-left`}
+                `${base} ${isActive ? active:"hover:text-gray-900"} block w-full text-left`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                Certification
+                Experience
               </NavLink>
             </li>
           </ul>
