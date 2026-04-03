@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './componets/Home';
 import Navbar from './componets/Navbar';
 import About from './componets/About';
+import Skills from './componets/Skills';
 import Projects from './componets/Projects';
 import Contact from './componets/Contact';
 import Footer from './componets/Footer';
@@ -19,6 +20,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/skills" element={<Skills />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/Certification" element={<Certification />} />

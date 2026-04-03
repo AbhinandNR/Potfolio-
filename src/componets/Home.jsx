@@ -1,10 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaAws, FaDocker, FaLinux, FaChevronDown, FaCloud, FaServer } from "react-icons/fa";
+import Particles from "react-tsparticles";
+import { loadSlim } from "tsparticles-slim";
+import { FaAws, FaDocker, FaLinux, FaChevronDown, FaCloud, FaServer, FaShieldAlt, FaCode } from "react-icons/fa";
 import { SiKubernetes, SiTerraform, SiJenkins, SiGithubactions, SiPython } from "react-icons/si";
 
 const Home = () => {
   const navigate = useNavigate();
+
+  const particlesInit = useCallback(async (engine) => {
+    await loadSlim(engine);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -38,34 +44,76 @@ const Home = () => {
           overflow-hidden
         "
       >
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-[#A78BFA] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob pointer-events-none"></div>
-        <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-[#4F8EF7] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000 pointer-events-none"></div>
+        <Particles
+          id="tsparticles"
+          init={particlesInit}
+          options={{
+            fullScreen: { enable: false, zIndex: 0 },
+            particles: {
+              number: { value: 50, density: { enable: true, value_area: 800 } },
+              color: { value: ["#4F8EF7", "#A78BFA", "#34D399"] },
+              shape: { type: "circle" },
+              opacity: { value: 0.5, random: true },
+              size: { value: 3, random: true },
+              links: {
+                enable: true,
+                distance: 150,
+                color: "#A78BFA",
+                opacity: 0.2,
+                width: 1
+              },
+              move: { enable: true, speed: 1, direction: "none", random: true, outModes: "out" }
+            },
+            interactivity: {
+              events: {
+                onHover: { enable: true, mode: "grab" },
+                onClick: { enable: true, mode: "push" }
+              },
+              modes: {
+                grab: { distance: 140, links: { opacity: 0.5 } },
+                push: { quantity: 4 }
+              }
+            }
+          }}
+          className="absolute inset-0 z-0 pointer-events-auto"
+        />
 
-        <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between z-10 gap-12">
+        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-[#A78BFA] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob pointer-events-none z-0"></div>
+        <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-[#4F8EF7] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000 pointer-events-none z-0"></div>
+
+        <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between z-10 gap-12 relative pointer-events-none">
           {/* Text Content */}
-          <div className="max-w-2xl space-y-8 flex-1">
+          <div className="max-w-2xl space-y-8 flex-1 pointer-events-auto">
             <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-[#1F2937] tracking-tight">
               Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA] drop-shadow-sm">Abhinand</span> 👋
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-600 font-medium tracking-wide">
-              DevOps Engineer & Cloud Enthusiast
+              MCA Student | Tech Enthusiast
             </p>
 
             <p className="text-gray-500 text-lg max-w-2xl mx-auto md:mx-0 leading-relaxed">
-              Architecting scalable infrastructure, automating CI/CD pipelines, and ensuring secure, highly-available cloud deployments.
+              Hands-on experience in Node.js, React.js, and modern development practices with real-world internship exposure.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 pt-6 justify-center md:justify-start">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 pt-6 justify-center md:justify-start z-20">
               <button
                 onClick={() => navigate("/projects")}
-                className="bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA] text-white px-8 py-4 rounded-xl font-medium shadow-[0_4px_14px_0_rgba(167,139,250,0.39)] hover:shadow-[0_6px_20px_rgba(167,139,250,0.5)] hover:-translate-y-1 transition-all duration-300"
+                className="bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA] text-white px-8 py-3 rounded-xl font-medium shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
               >
                 View Projects
               </button>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 border border-[#1F2937] text-[#1F2937] bg-white px-8 py-3 rounded-xl font-medium hover:bg-[#1F2937] hover:text-white hover:-translate-y-1 shadow-sm transition-all duration-300"
+              >
+                View Resume
+              </a>
               <button
                 onClick={() => navigate("/contact")}
-                className="bg-white/80 border border-gray-200 backdrop-blur-md text-gray-700 px-8 py-4 rounded-xl font-medium shadow-sm hover:shadow-md hover:bg-white hover:-translate-y-1 transition-all duration-300"
+                className="bg-white/80 border border-gray-200 backdrop-blur-md text-gray-700 px-8 py-3 rounded-xl font-medium shadow-sm hover:shadow-md hover:bg-white hover:-translate-y-1 transition-all duration-300"
               >
                 Contact Me
               </button>
@@ -89,8 +137,28 @@ const Home = () => {
           </div>
         </div>
 
+        {/* Instant Impact Strip */}
+        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 w-full max-w-5xl px-6 z-20">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: <FaServer className="text-[#A78BFA] text-lg" />, bg: "#A78BFA", label: "Software Dev Intern", sub: "Kenmerk Softwares" },
+              { icon: <FaAws className="text-[#FF9900] text-lg" />, bg: "#FF9900", label: "AWS Cloud Foundations", sub: "Amazon Web Services" },
+              { icon: <FaCode className="text-[#4F8EF7] text-lg" />, bg: "#4F8EF7", label: "DevOps Fundamentals", sub: "IBM · Mar 2026" },
+              { icon: <FaShieldAlt className="text-[#34D399] text-lg" />, bg: "#34D399", label: "Cloud Security (CCSA)", sub: "Red Team Academy" }
+            ].map((item, i) => (
+              <div key={i} className="bg-white/85 backdrop-blur-md px-4 py-4 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-3 hover:-translate-y-1 hover:shadow-md transition-all duration-300">
+                <div className="p-2 rounded-xl flex-shrink-0" style={{ background: item.bg + '18' }}>{item.icon}</div>
+                <div className="text-left leading-tight min-w-0">
+                  <span className="block font-bold text-gray-800 text-xs xl:text-sm leading-tight">{item.label}</span>
+                  <span className="text-xs text-gray-500 truncate">{item.sub}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce opacity-70">
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce opacity-70 z-20">
           <span className="text-sm font-medium text-gray-400">Scroll</span>
           <FaChevronDown className="text-gray-400" />
         </div>
@@ -100,48 +168,7 @@ const Home = () => {
       <div className="w-full h-px bg-gradient-to-r from-transparent via-[#A78BFA]/40 to-transparent"></div>
 
 
-      {/* ================= SKILLS ================= */}
-      <section className="py-28 md:py-32 bg-white text-center border-y border-gray-100 reveal-on-scroll translate-y-10 opacity-0 transition-all duration-700 ease-out">
-        <div className="max-w-6xl mx-auto px-6">
-
-          <h2 className="text-3xl md:text-4xl font-bold mb-14 text-gray-900">DevOps Toolchain</h2>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { name: "AWS Cloud", icon: <FaAws className="text-[#FF9900]" /> },
-              { name: "Docker", icon: <FaDocker className="text-[#2496ED]" /> },
-              { name: "Kubernetes", icon: <SiKubernetes className="text-[#326CE5]" /> },
-              { name: "GitHub Actions", icon: <SiGithubactions className="text-[#2088FF]" /> },
-              { name: "Terraform", icon: <SiTerraform className="text-[#844FBA]" /> },
-              { name: "Linux", icon: <FaLinux className="text-[#FCC624]" /> },
-              { name: "Jenkins", icon: <SiJenkins className="text-[#D33833]" /> },
-              { name: "Python", icon: <SiPython className="text-[#3776AB]" /> },
-            ].map((skill, i) => (
-              <div
-                key={i}
-                style={{ transitionDelay: `${i * 100}ms` }}
-                className="
-                  group
-                  bg-[#F9FAFB] border border-gray-100 py-8 px-6 rounded-2xl 
-                  shadow-sm hover:shadow-[0_8px_30px_rgba(79,142,247,0.12)] 
-                  hover:border-[#4F8EF7]/30 hover:bg-white hover:-translate-y-2
-                  transition-all duration-300 flex flex-col items-center gap-4
-                  reveal-on-scroll translate-y-10 opacity-0
-                "
-              >
-                <div className="text-5xl group-hover:scale-110 transition-transform duration-300 filter drop-shadow-sm">
-                  {skill.icon}
-                </div>
-                <span className="font-semibold text-gray-700 group-hover:text-[#4F8EF7] transition-colors">{skill.name}</span>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* Divider */}
-      <div className="w-full h-px bg-gradient-to-r from-transparent via-[#34D399]/40 to-transparent"></div>
+      {/* (Skills section removed because it is now a dedicated page) */}
 
 
       {/* ================= PROJECT PREVIEW ================= */}

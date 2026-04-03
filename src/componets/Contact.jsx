@@ -19,7 +19,7 @@ const Contact = () => {
 
         {/* Heading */}
         <h2 className="text-5xl md:text-6xl font-extrabold text-[#1F2937] mb-6 tracking-tight">
-          Let’s Work <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA]">Together</span>
+          Let’s Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA]">Amazing</span>
         </h2>
 
         <p className="text-gray-500 text-lg mb-20 max-w-2xl mx-auto">

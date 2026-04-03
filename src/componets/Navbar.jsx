@@ -59,6 +59,17 @@ const Navbar = () => {
 
           <li>
             <NavLink
+              to="/skills"
+              className={({ isActive }) =>
+                `${base} ${isActive ? active : "hover:text-gray-900"}`
+              }
+            >
+              Skills
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
               to="/projects"
               className={({ isActive }) =>
                 `${base} ${isActive ? active : "hover:text-gray-900"}`
@@ -134,6 +145,18 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 About
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to="/skills"
+                className={({ isActive }) =>
+                  `${base} ${isActive ? active : "hover:text-gray-900"} block w-full text-left`
+                }
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Skills
               </NavLink>
             </li>
 
