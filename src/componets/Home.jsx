@@ -2,8 +2,8 @@ import React, { useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
-import { FaAws, FaDocker, FaLinux, FaChevronDown, FaCloud, FaServer, FaShieldAlt, FaCode } from "react-icons/fa";
-import { SiKubernetes, SiTerraform, SiJenkins, SiGithubactions, SiPython } from "react-icons/si";
+import { FaAws, FaDocker, FaChevronDown, FaCloud, FaServer, FaShieldAlt, FaCode } from "react-icons/fa";
+import { SiKubernetes } from "react-icons/si";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -267,14 +267,14 @@ const Home = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-[#4F8EF7]/5 to-[#A78BFA]/5 opacity-100 pointer-events-none"></div>
         <div className="relative z-10">
           <h2 className="text-3xl md:text-5xl font-extrabold mb-8 tracking-tight">
-            Ready to Automate & Scale? 🚀
+            Have a project in mind? Let's build it together 🚀
           </h2>
 
           <button
             onClick={() => navigate("/contact")}
             className="bg-[#1F2937] text-white px-10 py-4 rounded-xl font-semibold hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
           >
-            Let's Collaborate
+            Get in Touch
           </button>
         </div>
       </section>
