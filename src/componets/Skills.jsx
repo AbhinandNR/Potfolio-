@@ -38,7 +38,7 @@ const Skills = () => {
   ];
 
   return (
-    <section className="py-20 md:py-32 px-6 min-h-screen bg-[#F9FAFB] relative overflow-hidden">
+    <section className="py-20 md:py-32 px-4 md:px-6 min-h-screen bg-[#F9FAFB] relative overflow-hidden">
       <div className="absolute top-20 left-10 w-96 h-96 bg-[#34D399]/10 rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto relative z-10 text-center">

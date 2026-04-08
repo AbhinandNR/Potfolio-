@@ -84,22 +84,22 @@ const Home = () => {
         <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between z-10 gap-12 relative pointer-events-none">
           {/* Text Content */}
           <div className="max-w-2xl space-y-6 md:space-y-8 flex-1 pointer-events-auto">
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-[#1F2937] tracking-tight">
+            <h1 className="text-3xl sm:text-6xl md:text-7xl font-extrabold text-[#1F2937] tracking-tight leading-tight">
               Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA] drop-shadow-sm">Abhinand</span> 👋
             </h1>
 
-            <p className="text-lg md:text-2xl text-gray-600 font-medium tracking-wide">
+            <p className="text-base md:text-2xl text-gray-600 font-medium tracking-wide">
               MCA Student | Tech Enthusiast
             </p>
 
-            <p className="text-gray-500 text-base md:text-lg max-w-2xl mx-auto md:mx-0 leading-relaxed">
+            <p className="text-gray-500 text-sm md:text-lg max-w-2xl mx-auto md:mx-0 leading-relaxed px-2 md:px-0">
               Hands-on experience in Node.js, React.js, and modern development practices with real-world internship exposure.
             </p>
 
-            <div className="flex flex-col sm:flex-row flex-wrap gap-4 pt-4 md:pt-6 justify-center md:justify-start z-20">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4 pt-4 md:pt-6 justify-center md:justify-start z-20 px-4 md:px-0">
               <button
                 onClick={() => navigate("/projects")}
-                className="bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA] text-white px-8 py-3 rounded-xl font-medium shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                className="w-full sm:w-auto bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA] text-white px-8 py-3 rounded-xl font-medium shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
               >
                 View Projects
               </button>
@@ -107,13 +107,13 @@ const Home = () => {
                 href="https://drive.google.com/file/d/1GgqyGkC4iRv_c1wIi-E3XVXKjM9e8XMt/view?usp=sharing"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 border border-[#1F2937] text-[#1F2937] bg-white px-8 py-3 rounded-xl font-medium hover:bg-[#1F2937] hover:text-white hover:-translate-y-1 shadow-sm transition-all duration-300"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-[#1F2937] text-[#1F2937] bg-white px-8 py-3 rounded-xl font-medium hover:bg-[#1F2937] hover:text-white hover:-translate-y-1 shadow-sm transition-all duration-300"
               >
                 View Resume
               </a>
               <button
                 onClick={() => navigate("/contact")}
-                className="bg-white/80 border border-gray-200 backdrop-blur-md text-gray-700 px-8 py-3 rounded-xl font-medium shadow-sm hover:shadow-md hover:bg-white hover:-translate-y-1 transition-all duration-300"
+                className="w-full sm:w-auto bg-white/80 border border-gray-200 backdrop-blur-md text-gray-700 px-8 py-3 rounded-xl font-medium shadow-sm hover:shadow-md hover:bg-white hover:-translate-y-1 transition-all duration-300"
               >
                 Contact Me
               </button>
@@ -138,7 +138,7 @@ const Home = () => {
         </div>
 
         {/* Instant Impact Strip */}
-        <div className="relative md:absolute bottom-10 md:bottom-20 left-0 md:left-1/2 transform md:-translate-x-1/2 w-full max-w-5xl px-6 z-20 mt-12 md:mt-0">
+        <div className="relative md:absolute bottom-10 md:bottom-16 left-0 md:left-1/2 transform md:-translate-x-1/2 w-full max-w-5xl px-4 md:px-6 z-20 mt-10 md:mt-0">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               { icon: <FaFigma className="text-[#F24E1E] text-lg" />, bg: "#F24E1E", label: "UI/UX Designer", sub: "Figma Specialist" },
@@ -172,11 +172,11 @@ const Home = () => {
 
 
       {/* ================= PROJECT PREVIEW ================= */}
-      <section className="py-20 md:py-32 bg-[#F9FAFB] text-center border-b border-gray-100 relative reveal-on-scroll translate-y-10 opacity-0 transition-all duration-700 ease-out">
+      <section className="py-16 md:py-32 bg-[#F9FAFB] text-center border-b border-gray-100 relative reveal-on-scroll translate-y-10 opacity-0 transition-all duration-700 ease-out">
         <div className="absolute top-10 right-10 w-40 h-40 bg-[#34D399] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob pointer-events-none"></div>
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
 
-          <h2 className="text-3xl md:text-5xl font-bold mb-10 md:mb-14 text-gray-900 text-center">Featured Projects</h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-8 md:mb-14 text-gray-900 text-center">Featured Projects</h2>
 
           <div className="grid lg:grid-cols-2 xl:grid-cols-4 md:grid-cols-2 gap-8">
 
@@ -263,7 +263,7 @@ const Home = () => {
 
 
       {/* ================= CTA ================= */}
-      <section className="py-20 md:py-32 bg-white text-gray-900 text-center space-y-6 md:space-y-8 relative overflow-hidden reveal-on-scroll translate-y-10 opacity-0 transition-all duration-700 ease-out">
+      <section className="py-16 md:py-32 bg-white text-gray-900 text-center space-y-6 md:space-y-8 relative overflow-hidden reveal-on-scroll translate-y-10 opacity-0 transition-all duration-700 ease-out">
         <div className="absolute inset-0 bg-gradient-to-r from-[#4F8EF7]/5 to-[#A78BFA]/5 opacity-100 pointer-events-none"></div>
         <div className="relative z-10 px-6">
           <h2 className="text-3xl md:text-5xl font-extrabold mb-6 md:mb-8 tracking-tight max-w-4xl mx-auto">

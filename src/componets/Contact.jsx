@@ -5,7 +5,7 @@ const Contact = () => {
     <section
       id="contacts"
       className="
-        py-20 md:py-32 px-6
+        py-20 md:py-32 px-4 md:px-6
         min-h-screen
         bg-white
         relative

@@ -42,7 +42,7 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 md:py-32 px-6 min-h-screen bg-[#F9FAFB] relative overflow-hidden">
+    <section id="projects" className="py-20 md:py-32 px-4 md:px-6 min-h-screen bg-[#F9FAFB] relative overflow-hidden">
       <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-[#34D399]/10 rounded-full blur-[120px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto relative z-10 text-center">

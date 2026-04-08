@@ -26,7 +26,7 @@ const Navbar = () => {
         : 'bg-transparent'
     } text-gray-700 fixed top-0 z-50`}>
 
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 sm:px-8 py-4">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-4 sm:px-8 py-4">
 
         {/* Logo */}
         <h1 className="text-2xl font-bold tracking-tight text-gray-900 hover:scale-105 transition-transform duration-300">

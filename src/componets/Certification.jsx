@@ -155,7 +155,7 @@ const Certification = () => {
   return (
     <section
       id="certificates"
-      className="py-20 md:py-32 px-6 min-h-screen bg-[#F9FAFB] relative overflow-hidden"
+      className="py-20 md:py-32 px-4 md:px-6 min-h-screen bg-[#F9FAFB] relative overflow-hidden"
     >
       {/* Background blobs */}
       <div className="absolute top-20 right-10 w-96 h-96 bg-[#4F8EF7]/10 rounded-full blur-[100px] pointer-events-none" />
