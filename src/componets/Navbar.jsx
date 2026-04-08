@@ -95,7 +95,16 @@ const Navbar = () => {
               to="/certification"
               className={({isActive})=>
               `${base} ${isActive ? active:"hover:text-gray-900"}`}>
-                Education & Experience
+                Experience
+              </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/resume"
+              className={({isActive})=>
+              `${base} ${isActive ? active:"hover:text-gray-900"}`}>
+                Resume
               </NavLink>
           </li>
         </ul>
@@ -192,6 +201,17 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Experience
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to="/resume"
+                className={({isActive})=>
+                `${base} ${isActive ? active:"hover:text-gray-900"} block w-full text-left`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Resume
               </NavLink>
             </li>
           </ul>

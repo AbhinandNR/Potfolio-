@@ -87,9 +87,9 @@ const Home = () => {
         <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-[#A78BFA] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob pointer-events-none z-0"></div>
         <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-[#4F8EF7] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000 pointer-events-none z-0"></div>
 
-        <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between z-10 gap-12 relative pointer-events-none">
+        <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between z-10 gap-16 md:gap-12 relative pointer-events-none">
           {/* Text Content */}
-          <div className="max-w-2xl space-y-6 md:space-y-8 flex-1 pointer-events-auto">
+          <div className="max-w-2xl space-y-6 md:space-y-8 flex-1 pointer-events-auto pb-8 md:pb-0">
             <h1 className="text-3xl sm:text-6xl md:text-7xl font-extrabold text-[#1F2937] tracking-tight leading-tight">
               Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA] drop-shadow-sm">Abhinand</span> 👋
             </h1>
@@ -109,14 +109,12 @@ const Home = () => {
               >
                 View Projects
               </button>
-              <a
-                href="https://drive.google.com/file/d/1GgqyGkC4iRv_c1wIi-E3XVXKjM9e8XMt/view?usp=sharing"
-                target="_blank"
-                rel="noreferrer"
+              <button
+                onClick={() => navigate("/resume")}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-[#1F2937] text-[#1F2937] bg-white px-8 py-3 rounded-xl font-medium hover:bg-[#1F2937] hover:text-white hover:-translate-y-1 shadow-sm transition-all duration-300"
               >
                 View Resume
-              </a>
+              </button>
               <button
                 onClick={() => navigate("/contact")}
                 className="w-full sm:w-auto bg-white/80 border border-gray-200 backdrop-blur-md text-gray-700 px-8 py-3 rounded-xl font-medium shadow-sm hover:shadow-md hover:bg-white hover:-translate-y-1 transition-all duration-300"
@@ -144,7 +142,7 @@ const Home = () => {
         </div>
 
         {/* Instant Impact Strip */}
-        <div className="relative md:absolute bottom-10 md:bottom-16 left-0 md:left-1/2 transform md:-translate-x-1/2 w-full max-w-5xl px-4 md:px-6 z-20 mt-10 md:mt-0">
+        <div className="relative md:absolute bottom-10 md:bottom-16 left-0 md:left-1/2 transform md:-translate-x-1/2 w-full max-w-5xl px-4 md:px-6 z-20 mt-16 md:mt-0">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               { icon: <FaFigma className="text-[#F24E1E] text-lg" />, bg: "#F24E1E", label: "UI/UX Designer", sub: "Figma Specialist" },

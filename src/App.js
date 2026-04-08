@@ -9,6 +9,7 @@ import Projects from './componets/Projects';
 import Contact from './componets/Contact';
 import Footer from './componets/Footer';
 import Certification from './componets/Certification';
+import Resume from './componets/Resume';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/Certification" element={<Certification />} />
+            <Route path="/resume" element={<Resume />} />
           </Routes>
         </div>
 
