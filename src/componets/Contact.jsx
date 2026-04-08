@@ -5,7 +5,7 @@ const Contact = () => {
     <section
       id="contacts"
       className="
-        py-48 px-6
+        py-20 md:py-32 px-6
         min-h-screen
         bg-white
         relative
@@ -18,11 +18,11 @@ const Contact = () => {
       <div className="max-w-5xl mx-auto text-center relative z-10">
 
         {/* Heading */}
-        <h2 className="text-5xl md:text-6xl font-extrabold text-[#1F2937] mb-6 tracking-tight">
+        <h2 className="text-4xl md:text-6xl font-extrabold text-[#1F2937] mb-6 tracking-tight">
           Let’s Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA]">Amazing</span>
         </h2>
 
-        <p className="text-gray-500 text-lg mb-20 max-w-2xl mx-auto">
+        <p className="text-gray-500 text-base md:text-lg mb-12 md:mb-20 max-w-2xl mx-auto">
           Got a project idea or job opportunity? Feel free to reach out. I'm currently open for new opportunities.
         </p>
 
@@ -34,8 +34,8 @@ const Contact = () => {
             border border-gray-100
             shadow-[0_8px_30px_rgba(0,0,0,0.04)]
             rounded-3xl
-            p-10 md:p-16
-            space-y-10
+            p-8 md:p-16
+            space-y-6 md:space-y-10
             text-left
           "
         >

@@ -16,7 +16,7 @@ const Projects = () => {
       title: "BookCycle Marketplace",
       problem: "University students struggled to find a safe, centralized platform to exchange or buy second-hand academic books.",
       solution: "Built a responsive MERN stack application allowing seamless user authentication, book listings, and in-app communications.",
-      techStack: "React, Express, Node.js, Stripe",
+      techStack: "React, Express, Node.js, Tailwind CSS, MongoDB,typescript",
       impact: "Delivered a clean, high-performance platform promoting book recycling among students.",
       github: "https://github.com/AbhinandNR",
       demo: "#"
@@ -24,9 +24,9 @@ const Projects = () => {
     {
       title: "PawCare Solution",
       problem: "Pet owners had to switch between multiple apps to manage pet care, adoption, and veterinary services.",
-      solution: "Created a unified frontend interface using React.js to bring pet services, supplies shopping, and adoption under one platform.",
-      techStack: "React, Redux, REST API",
-      impact: "Showcased ability to handle complex state management and integrate multiple API endpoints smoothly.",
+      solution: "Developed a comprehensive pet care platform with a custom-built PHP backend and dynamic MySQL database to manage pet service scheduling and adoption workflows.",
+      techStack: "PHP, MySQL, HTML, CSS, Bootstrap",
+      impact: "Demonstrated proficiency in server-side scripting, relational database management, and responsive frontend design.",
       github: "https://github.com/AbhinandNR",
       demo: "#"
     },
@@ -42,24 +42,24 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-40 px-6 min-h-screen bg-[#F9FAFB] relative overflow-hidden">
+    <section id="projects" className="py-20 md:py-32 px-6 min-h-screen bg-[#F9FAFB] relative overflow-hidden">
       <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-[#34D399]/10 rounded-full blur-[120px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto relative z-10 text-center">
-        <h2 className="text-5xl md:text-6xl font-extrabold mb-8 text-[#1F2937] tracking-tight">
+        <h2 className="text-4xl md:text-6xl font-extrabold mb-8 text-[#1F2937] tracking-tight">
           Engineering <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA]">Case Studies</span>
         </h2>
-        <p className="text-gray-500 text-lg mb-20 max-w-2xl mx-auto">
+        <p className="text-gray-500 text-base md:text-lg mb-12 md:mb-20 max-w-2xl mx-auto">
           Deep dives into complex challenges, technical decisions, and the real-world impact of my recent applications.
         </p>
 
-        <div className="flex flex-col gap-16 text-left">
+        <div className="flex flex-col gap-10 md:gap-16 text-left">
           {projects.map((p, index) => (
             <div
               key={index}
               className="
                 group
-                bg-white border border-gray-100 p-10 md:p-14
+                bg-white border border-gray-100 p-8 md:p-14
                 rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.04)]
                 hover:shadow-[0_20px_40px_rgba(167,139,250,0.15)]
                 hover:border-[#A78BFA]/30 hover:-translate-y-2

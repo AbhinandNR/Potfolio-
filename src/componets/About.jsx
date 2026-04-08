@@ -5,7 +5,7 @@ const About = () => {
     <section
       id="about"
       className="
-        py-48 px-6
+        py-20 md:py-32 px-6
         min-h-screen
         bg-[#F9FAFB]
         relative
@@ -15,10 +15,10 @@ const About = () => {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#A78BFA]/10 rounded-full blur-[100px] pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#4F8EF7]/10 rounded-full blur-[100px] pointer-events-none"></div>
 
-      <div className="max-w-5xl mx-auto text-center space-y-16 relative z-10">
+      <div className="max-w-5xl mx-auto text-center space-y-12 md:space-y-16 relative z-10">
 
         {/* Heading */}
-        <h2 className="text-5xl md:text-6xl font-extrabold text-[#1F2937] tracking-tight">
+        <h2 className="text-4xl md:text-6xl font-extrabold text-[#1F2937] tracking-tight">
           About <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA]">Me</span>
         </h2>
 

@@ -155,23 +155,23 @@ const Certification = () => {
   return (
     <section
       id="certificates"
-      className="py-32 px-6 min-h-screen bg-[#F9FAFB] relative overflow-hidden"
+      className="py-20 md:py-32 px-6 min-h-screen bg-[#F9FAFB] relative overflow-hidden"
     >
       {/* Background blobs */}
       <div className="absolute top-20 right-10 w-96 h-96 bg-[#4F8EF7]/10 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-20 left-10 w-80 h-80 bg-[#A78BFA]/10 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="max-w-5xl mx-auto relative z-10 space-y-28">
+      <div className="max-w-5xl mx-auto relative z-10 space-y-20 md:space-y-28">
 
         {/* ---- HEADING ---- */}
         <div className="text-center">
-          <h2 className="text-5xl md:text-6xl font-extrabold mb-4 text-[#1F2937] tracking-tight">
+          <h2 className="text-4xl md:text-6xl font-extrabold mb-4 text-[#1F2937] tracking-tight">
             Experience &{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4F8EF7] to-[#34D399]">
               Certifications
             </span>
           </h2>
-          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-500 text-base md:text-lg max-w-2xl mx-auto">
             A continuous journey of learning and strengthening Cloud and DevOps expertise.
           </p>
         </div>
@@ -293,7 +293,7 @@ const Certification = () => {
                         <p className="text-sm text-gray-500 mt-0.5">{cert.issuer}</p>
                       </div>
                     </div>
-                    <div className="flex flex-col items-start md:items-end gap-2 flex-shrink-0 pl-14 md:pl-0">
+                    <div className="flex flex-col items-start md:items-end gap-2 flex-shrink-0 md:pl-0">
                       <span className="px-4 py-1.5 rounded-full bg-[#4F8EF7]/10 text-[#4F8EF7] text-sm font-semibold whitespace-nowrap">
                         {cert.date}
                       </span>
@@ -303,10 +303,10 @@ const Certification = () => {
                     </div>
                   </div>
 
-                  <p className="text-gray-600 leading-relaxed pl-0 md:pl-16">{cert.desc}</p>
+                  <p className="text-gray-600 text-sm md:text-base leading-relaxed md:pl-16">{cert.desc}</p>
 
                   {/* Certificate Image */}
-                  <div className="pl-0 md:pl-16">
+                  <div className="md:pl-16">
                     <CertImageCard src={cert.certImage} title={cert.title} />
                   </div>
                 </div>

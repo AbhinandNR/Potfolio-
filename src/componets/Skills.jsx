@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { FaAws, FaDocker, FaLinux } from "react-icons/fa";
-import { SiKubernetes, SiTerraform, SiJenkins, SiGithubactions, SiPython } from "react-icons/si";
+import { FaAws, FaDocker, FaLinux, FaFigma } from "react-icons/fa";
+import { SiKubernetes, SiTerraform, SiJenkins, SiGithubactions, SiPython, SiNodedotjs, SiReact } from "react-icons/si";
 
 const Skills = () => {
   useEffect(() => {
@@ -26,25 +26,26 @@ const Skills = () => {
   }, []);
 
   const skills = [
+    { name: "UI/UX Design (Figma)", icon: <FaFigma className="text-[#F24E1E]" />, level: "80%" },
+    { name: "React.js / Frontend", icon: <SiReact className="text-[#61DAFB]" />, level: "90%" },
+    { name: "Node.js / Backend", icon: <SiNodedotjs className="text-[#339933]" />, level: "85%" },
     { name: "AWS Cloud Architecture", icon: <FaAws className="text-[#FF9900]" />, level: "90%" },
     { name: "Docker Containerization", icon: <FaDocker className="text-[#2496ED]" />, level: "85%" },
     { name: "Kubernetes Orchestration", icon: <SiKubernetes className="text-[#326CE5]" />, level: "80%" },
     { name: "GitHub Actions / CI-CD", icon: <SiGithubactions className="text-[#2088FF]" />, level: "85%" },
-    { name: "Terraform (IaC)", icon: <SiTerraform className="text-[#844FBA]" />, level: "75%" },
-    { name: "Linux Administration", icon: <FaLinux className="text-[#FCC624]" />, level: "90%" },
-    { name: "Jenkins Automation", icon: <SiJenkins className="text-[#D33833]" />, level: "70%" },
     { name: "Python Scripting", icon: <SiPython className="text-[#3776AB]" />, level: "85%" },
+    { name: "Jenkins Automation", icon: <SiJenkins className="text-[#D33833]" />, level: "70%" },
   ];
 
   return (
-    <section className="py-40 px-6 min-h-screen bg-[#F9FAFB] relative overflow-hidden">
+    <section className="py-20 md:py-32 px-6 min-h-screen bg-[#F9FAFB] relative overflow-hidden">
       <div className="absolute top-20 left-10 w-96 h-96 bg-[#34D399]/10 rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto relative z-10 text-center">
-        <h2 className="text-5xl md:text-6xl font-extrabold mb-6 text-[#1F2937] tracking-tight">
+        <h2 className="text-4xl md:text-6xl font-extrabold mb-6 text-[#1F2937] tracking-tight">
           Core <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA]">Competencies</span>
         </h2>
-        <p className="text-gray-500 text-lg mb-20 max-w-2xl mx-auto">
+        <p className="text-gray-500 text-base md:text-lg mb-12 md:mb-20 max-w-2xl mx-auto">
           Strong foundation in modern web development, backend engineering, and building reliable applications.
         </p>
 
