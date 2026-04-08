@@ -16,7 +16,7 @@ const Projects = () => {
       title: "BookCycle Marketplace",
       problem: "University students struggled to find a safe, centralized platform to exchange or buy second-hand academic books.",
       solution: "Built a responsive MERN stack application allowing seamless user authentication, book listings, and in-app communications.",
-      techStack: "React, Express, Node.js, Tailwind CSS, MongoDB,typescript",
+      techStack: "React, Express, Node.js, Tailwind CSS, MongoDB, TypeScript",
       impact: "Delivered a clean, high-performance platform promoting book recycling among students.",
       github: "https://github.com/AbhinandNR",
       demo: "#"

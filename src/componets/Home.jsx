@@ -188,7 +188,7 @@ const Home = () => {
               },
               {
                 title: "BookCycle Marketplace",
-                desc: "Full-stack e-commerce system for book trading/rentals utilizing microservices architecture layout.",
+                desc: "Responsive MERN stack e-commerce system built with TypeScript and Tailwind CSS for centralized book trading.",
                 github: "https://github.com/AbhinandNR"
               },
               {
