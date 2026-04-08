@@ -1,15 +1,20 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Particles from "react-tsparticles";
-import { loadSlim } from "tsparticles-slim";
-import { FaAws, FaDocker, FaChevronDown, FaCloud, FaServer, FaShieldAlt, FaCode, FaFigma } from "react-icons/fa";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
+import { FaAws, FaDocker, FaChevronDown, FaServer, FaShieldAlt, FaCode, FaFigma } from "react-icons/fa";
 import { SiKubernetes } from "react-icons/si";
 
 const Home = () => {
   const navigate = useNavigate();
+  const [particlesInit, setParticlesInit] = useState(false);
 
-  const particlesInit = useCallback(async (engine) => {
-    await loadSlim(engine);
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setParticlesInit(true);
+    });
   }, []);
 
   useEffect(() => {
@@ -44,39 +49,40 @@ const Home = () => {
           overflow-hidden
         "
       >
-        <Particles
-          id="tsparticles"
-          init={particlesInit}
-          options={{
-            fullScreen: { enable: false, zIndex: 0 },
-            particles: {
-              number: { value: 30, density: { enable: true, value_area: 800 } },
-              color: { value: ["#4F8EF7", "#A78BFA", "#34D399"] },
-              shape: { type: "circle" },
-              opacity: { value: 0.5, random: true },
-              size: { value: 3, random: true },
-              links: {
-                enable: true,
-                distance: 150,
-                color: "#A78BFA",
-                opacity: 0.2,
-                width: 1
+        {particlesInit && (
+          <Particles
+            id="tsparticles"
+            options={{
+              fullScreen: { enable: false, zIndex: 0 },
+              particles: {
+                number: { value: 30, density: { enable: true, value_area: 800 } },
+                color: { value: ["#4F8EF7", "#A78BFA", "#34D399"] },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                links: {
+                  enable: true,
+                  distance: 150,
+                  color: "#A78BFA",
+                  opacity: 0.2,
+                  width: 1
+                },
+                move: { enable: true, speed: 1, direction: "none", random: true, outModes: "out" }
               },
-              move: { enable: true, speed: 1, direction: "none", random: true, outModes: "out" }
-            },
-            interactivity: {
-              events: {
-                onHover: { enable: true, mode: "grab" },
-                onClick: { enable: true, mode: "push" }
-              },
-              modes: {
-                grab: { distance: 140, links: { opacity: 0.5 } },
-                push: { quantity: 4 }
+              interactivity: {
+                events: {
+                  onHover: { enable: true, mode: "grab" },
+                  onClick: { enable: true, mode: "push" }
+                },
+                modes: {
+                  grab: { distance: 140, links: { opacity: 0.5 } },
+                  push: { quantity: 4 }
+                }
               }
-            }
-          }}
-          className="absolute inset-0 z-0 pointer-events-auto"
-        />
+            }}
+            className="absolute inset-0 z-0 pointer-events-auto"
+          />
+        )}
 
         <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-[#A78BFA] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob pointer-events-none z-0"></div>
         <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-[#4F8EF7] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000 pointer-events-none z-0"></div>

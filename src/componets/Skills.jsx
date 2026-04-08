@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { FaAws, FaDocker, FaLinux, FaFigma } from "react-icons/fa";
-import { SiKubernetes, SiTerraform, SiJenkins, SiGithubactions, SiPython, SiNodedotjs, SiReact } from "react-icons/si";
+import { FaAws, FaDocker, FaFigma } from "react-icons/fa";
+import { SiKubernetes, SiJenkins, SiGithubactions, SiPython, SiNodedotjs, SiReact } from "react-icons/si";
 
 const Skills = () => {
   useEffect(() => {
