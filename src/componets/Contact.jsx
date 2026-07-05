@@ -88,22 +88,24 @@ const Contact = () => {
           />
 
           {/* Button */}
-          <button
-            type="submit"
-            className="
-              w-full
-              bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA]
-              text-white font-medium
-              py-3
-              rounded-xl
-              text-base
-              hover:shadow-[0_8px_25px_rgba(167,139,250,0.3)]
-              hover:-translate-y-1
-              transition-all duration-300
-            "
-          >
-            Send Message
-          </button>
+          <div className="flex justify-center mt-6">
+            <button
+              type="submit"
+              className="
+                w-full md:w-auto px-8 md:px-12
+                bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA]
+                text-white font-medium
+                py-3
+                rounded-xl
+                text-base
+                hover:shadow-[0_8px_25px_rgba(167,139,250,0.3)]
+                hover:-translate-y-1
+                transition-all duration-300
+              "
+            >
+              Send Message
+            </button>
+          </div>
 
         </form>
 

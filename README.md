@@ -4,7 +4,7 @@ Welcome to the repository for my personal portfolio website! This project showca
 
 ## 🚀 Live Demo
 
-*(Add link to live demo here once deployed, e.g., [https://abhinandnr.com](https://abhinandnr.com))*
+https://potfolio-dun-delta.vercel.app/
 
 ## 📖 About The Project
 
