@@ -31,7 +31,7 @@ const About = () => {
             
             <h3 className="text-3xl font-bold text-gray-900 mb-6 group-hover:text-[#4F8EF7] transition-colors">Continuous Learner & Builder</h3>
             <p className="mb-4">
-              I am an MCA student and full-stack developer passionate about building scalable, high-performance web applications. During my internship at Kenmerk Softwares, I gained hands-on experience designing intuitive user interfaces and robust APIs.
+              I am an MCA graduate and full-stack developer passionate about building scalable, high-performance web applications. During my internship at Kenmerk Softwares, I gained hands-on experience designing intuitive user interfaces and robust APIs.
             </p>
             <p className="mb-4">
               My technical journey bridges the gap between theoretical computer science and practical software engineering. By mastering Node.js, React, and cloud-native fundamentals, I strive to write clean code that delivers real-world business value.

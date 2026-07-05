@@ -38,13 +38,13 @@ const Home = () => {
       <section
         id="home"
         className="
-          min-h-screen
+          min-h-[85vh]
           flex flex-col md:flex-row
           justify-center
           items-center
           text-center md:text-left
           px-6 md:px-12
-          pt-10 md:pt-20
+          py-12 md:py-16
           relative
           overflow-hidden
         "
@@ -87,7 +87,7 @@ const Home = () => {
         <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-[#A78BFA] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob pointer-events-none z-0"></div>
         <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-[#4F8EF7] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000 pointer-events-none z-0"></div>
 
-        <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between z-10 gap-16 md:gap-12 relative pointer-events-none">
+        <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between z-2 gap-16 md:gap-12 relative pointer-events-none">
           {/* Text Content */}
           <div className="max-w-2xl space-y-6 md:space-y-8 flex-1 pointer-events-auto pb-8 md:pb-0">
             <h1 className="text-3xl sm:text-6xl md:text-7xl font-extrabold text-[#1F2937] tracking-tight leading-tight">
@@ -95,7 +95,7 @@ const Home = () => {
             </h1>
 
             <p className="text-base md:text-2xl text-gray-600 font-medium tracking-wide">
-              MCA Student | Tech Enthusiast
+              Junior Web Developer | Tech Enthusiast
             </p>
 
             <p className="text-gray-500 text-sm md:text-lg max-w-2xl mx-auto md:mx-0 leading-relaxed px-2 md:px-0">

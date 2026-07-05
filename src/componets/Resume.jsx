@@ -36,7 +36,7 @@ const Resume = () => {
             <span className="hidden md:inline">|</span>
             <span>Mobile UI Designer</span>
             <span className="hidden md:inline">|</span>
-            <span>MCA Student</span>
+            <span>MCA Graduate</span>
           </div>
         </div>
 
@@ -131,7 +131,7 @@ const Resume = () => {
             <section>
               <h3 className="text-lg font-bold text-[#1a4b8c] border-b border-gray-200 pb-1 mb-4 uppercase tracking-widest font-sans">Professional Summary</h3>
               <p className="text-[14px] text-gray-700 leading-relaxed text-justify">
-                MCA student with real-world internship experience building full-stack web applications and designing mobile app UIs for client projects. 
+                MCA graduate with real-world internship experience building full-stack web applications and designing mobile app UIs for client projects. 
                 Proficient in Node.js, React.js, and RESTful APIs. Certified in IBM DevOps and AWS Cloud Foundations (NSDC). 
                 Eager to contribute in an entry-level IT role and grow within a collaborative tech team.
               </p>
@@ -169,7 +169,7 @@ const Resume = () => {
                   </div>
                   <div className="flex justify-between items-baseline text-sm italic text-gray-600 font-sans">
                     <p className="font-bold text-[#1a4b8c]">FISAT – Federal Institute of Science And Technology</p>
-                    <p className="font-semibold">2024 – Present</p>
+                    <p className="font-semibold">2024 – 2026</p>
                   </div>
                   <p className="text-xs text-gray-500 mt-1 font-sans">Coursework: Computer Networks, DBMS, Data Structures & Algorithms</p>
                 </div>

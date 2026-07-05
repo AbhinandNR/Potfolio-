@@ -75,11 +75,11 @@ const certifications = [
 const education = [
   {
     degree: "Master of Computer Applications (MCA)",
-    status: "Currently Pursuing",
-    statusColor: "#4F8EF7",
+    status: "Completed",
+    statusColor: "#34D399",
     desc: "Advancing knowledge in advanced software engineering, data structures, algorithms, and enterprise application architecture.",
-    icon: <FaGraduationCap className="text-[#4F8EF7] text-2xl" />,
-    borderColor: "#4F8EF7"
+    icon: <FaGraduationCap className="text-[#34D399] text-2xl" />,
+    borderColor: "#34D399"
   },
   {
     degree: "Bachelor of Science in Computer Science",
