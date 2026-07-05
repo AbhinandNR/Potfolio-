@@ -5,8 +5,7 @@ const Contact = () => {
     <section
       id="contacts"
       className="
-        py-20 md:py-32 px-4 md:px-6
-        min-h-screen
+        py-12 md:py-20 px-4 md:px-6
         bg-white
         relative
         overflow-hidden
@@ -18,11 +17,11 @@ const Contact = () => {
       <div className="max-w-5xl mx-auto text-center relative z-10">
 
         {/* Heading */}
-        <h2 className="text-4xl md:text-6xl font-extrabold text-[#1F2937] mb-6 tracking-tight">
+        <h2 className="text-3xl md:text-5xl font-extrabold text-[#1F2937] mb-4 tracking-tight">
           Let’s Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA]">Amazing</span>
         </h2>
 
-        <p className="text-gray-500 text-base md:text-lg mb-12 md:mb-20 max-w-2xl mx-auto">
+        <p className="text-gray-500 text-sm md:text-base mb-8 md:mb-12 max-w-2xl mx-auto">
           Got a project idea or job opportunity? Feel free to reach out. I'm currently open for new opportunities.
         </p>
 
@@ -34,14 +33,14 @@ const Contact = () => {
             border border-gray-100
             shadow-[0_8px_30px_rgba(0,0,0,0.04)]
             rounded-3xl
-            p-8 md:p-16
-            space-y-6 md:space-y-10
+            p-6 md:p-10
+            space-y-4 md:space-y-6
             text-left
           "
         >
 
           {/* Inputs row */}
-          <div className="grid md:grid-cols-2 gap-10">
+          <div className="grid md:grid-cols-2 gap-6">
 
             <input
               type="text"
@@ -51,7 +50,7 @@ const Contact = () => {
                 bg-[#F9FAFB]
                 border border-gray-200
                 text-gray-900 placeholder-gray-400
-                p-5 rounded-2xl
+                p-3 px-4 rounded-xl text-sm
                 focus:ring-2 focus:ring-[#4F8EF7]/50 focus:border-[#4F8EF7]
                 outline-none transition-all duration-300
               "
@@ -75,14 +74,14 @@ const Contact = () => {
 
           {/* Message */}
           <textarea
-            rows="6"
+            rows="5"
             placeholder="Your Message..."
             className="
               w-full
               bg-[#F9FAFB]
               border border-gray-200
               text-gray-900 placeholder-gray-400
-              p-5 rounded-2xl
+              p-3 px-4 rounded-xl text-sm
               focus:ring-2 focus:ring-[#4F8EF7]/50 focus:border-[#4F8EF7]
               outline-none transition-all duration-300 resize-none
             "
@@ -95,9 +94,9 @@ const Contact = () => {
               w-full
               bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA]
               text-white font-medium
-              py-5
-              rounded-2xl
-              text-lg
+              py-3
+              rounded-xl
+              text-base
               hover:shadow-[0_8px_25px_rgba(167,139,250,0.3)]
               hover:-translate-y-1
               transition-all duration-300
