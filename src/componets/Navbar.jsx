@@ -132,7 +132,7 @@ const Navbar = () => {
       {/* Mobile menu */}
       {isMenuOpen && (
         <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-gray-100 shadow-xl animate-in slide-in-from-top duration-300">
-          <ul className="flex flex-col py-4 px-6 space-y-2 font-medium">
+          <ul className="flex flex-col py-4 px-6 space-y-2 font-medium pb-24">
             <li>
               <NavLink
                 to="/"

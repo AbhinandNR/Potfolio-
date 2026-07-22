@@ -1,9 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import {
   FaAws, FaShieldAlt, FaBriefcase, FaRobot,
   FaCode, FaGraduationCap, FaTimes, FaExpand,
   FaCloud, FaBrain
 } from 'react-icons/fa'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Chip from '@mui/material/Chip'
+import KenmerkPDF from '../assets/Kenmerk.pdf'
+import AwsJPG from '../assets/Aws.jpg'
+import LissahJPG from '../assets/lissah.jpg'
+import CssaPDF from '../assets/ccsa.pdf'
+import IbmPDF from '../assets/IBM.pdf'
+
+gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 /* ------------------------------------------------------------------ */
 /* DATA                                                                  */
@@ -18,7 +29,8 @@ const certifications = [
     desc: "Certified in DevOps culture, CI/CD pipeline design, and cloud integration strategies. Strengthened ability to bridge development and operations for faster, reliable software delivery.",
     icon: <FaCode className="text-[#4F8EF7] text-2xl" />,
     borderColor: "#4F8EF7",
-    certImage: null   // drop file at public/certs/devops-ibm.jpg to enable
+    certImage: null,
+    certPDF: IbmPDF
   },
   {
     title: "AWS Academy Graduate – Cloud Foundations",
@@ -28,7 +40,7 @@ const certifications = [
     desc: "Foundational knowledge of AWS cloud architecture, core services, security best practices, and pricing models — structured for real-world cloud deployment.",
     icon: <FaAws className="text-[#FF9900] text-2xl" />,
     borderColor: "#FF9900",
-    certImage: null   // public/certs/aws-cloud.jpg
+    certImage: AwsJPG
   },
   {
     title: "AI for Beginners",
@@ -38,7 +50,7 @@ const certifications = [
     desc: "Completed structured AI training covering machine learning fundamentals, neural networks, and real-world AI application design.",
     icon: <FaBrain className="text-[#A78BFA] text-2xl" />,
     borderColor: "#A78BFA",
-    certImage: "/certs/ai-beginners.jpg"  // place your AI cert here
+    certImage: LissahJPG
   },
   {
     title: "Introduction to Intelligent Virtual Agents (IVAs) with IBM watsonx Assistant",
@@ -58,7 +70,8 @@ const certifications = [
     desc: "Core knowledge of AI tools, foundation models, and practical implementation workflows through IBM's watsonx.ai platform.",
     icon: <FaCode className="text-[#052FAD] text-2xl" />,
     borderColor: "#052FAD",
-    certImage: null
+    certImage: null,
+    certPDF: IbmPDF
   },
   {
     title: "Certified Cloud Security Associate (CCSA)",
@@ -68,7 +81,8 @@ const certifications = [
     desc: "Cloud security fundamentals including identity management, threat modeling, and secure architecture design for cloud environments.",
     icon: <FaShieldAlt className="text-[#34D399] text-2xl" />,
     borderColor: "#34D399",
-    certImage: null
+    certImage: null,
+    certPDF: CssaPDF
   }
 ]
 
@@ -133,13 +147,13 @@ const CertImageCard = ({ src, title }) => {
   return (
     <>
       <div
-        className="mt-6 relative cursor-pointer overflow-hidden rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group"
+        className="mt-6 relative cursor-pointer overflow-hidden rounded-2xl border-4 border-gray-100 bg-gray-50 shadow-sm hover:shadow-lg hover:border-gray-200 transition-all group p-2"
         onClick={() => setOpen(true)}
       >
-        <img src={src} alt={title} className="w-full object-cover max-h-52 group-hover:scale-105 transition-transform duration-500" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-          <span className="text-white text-sm font-medium flex items-center gap-2">
-            <FaExpand className="text-xs" /> Click to preview full certificate
+        <img src={src} alt={title} className="w-full h-auto max-h-60 object-contain group-hover:scale-[1.02] transition-transform duration-500 rounded-xl" />
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/30 m-2 rounded-xl">
+          <span className="text-white text-sm font-bold flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full shadow-lg">
+            <FaExpand className="text-sm" /> View Certificate
           </span>
         </div>
       </div>
@@ -152,9 +166,64 @@ const CertImageCard = ({ src, title }) => {
 /* MAIN COMPONENT                                                         */
 /* ------------------------------------------------------------------ */
 const Certification = () => {
+  const container = useRef()
+
+  useGSAP(() => {
+    // Heading
+    gsap.fromTo('.gsap-heading', 
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        scrollTrigger: {
+          trigger: '.gsap-heading',
+          start: 'top 85%',
+        }
+      }
+    )
+
+    // Sections
+    const sections = gsap.utils.toArray('.gsap-section')
+    sections.forEach((sec) => {
+      gsap.fromTo(sec, 
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: sec,
+            start: 'top 85%',
+          }
+        }
+      )
+    })
+
+    // Staggered Cards
+    const cardContainers = gsap.utils.toArray('.gsap-stagger-container')
+    cardContainers.forEach((container) => {
+      const cards = container.querySelectorAll('.gsap-card')
+      gsap.fromTo(cards, 
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.15,
+          scrollTrigger: {
+            trigger: container,
+            start: 'top 85%',
+          }
+        }
+      )
+    })
+  }, { scope: container })
+
   return (
     <section
       id="certificates"
+      ref={container}
       className="py-20 md:py-32 px-4 md:px-6 min-h-screen bg-[#F9FAFB] relative overflow-hidden"
     >
       {/* Background blobs */}
@@ -164,9 +233,9 @@ const Certification = () => {
       <div className="max-w-5xl mx-auto relative z-10 space-y-20 md:space-y-28">
 
         {/* ---- HEADING ---- */}
-        <div className="text-center">
+        <div className="text-center gsap-heading">
           <h2 className="text-4xl md:text-6xl font-extrabold mb-4 text-[#1F2937] tracking-tight">
-            Experience &{' '}
+            Education, Experience &{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4F8EF7] to-[#34D399]">
               Certifications
             </span>
@@ -180,13 +249,15 @@ const Certification = () => {
         {/* EDUCATION                                                           */}
         {/* ================================================================= */}
         <div>
-          <SectionLabel icon={<FaGraduationCap className="text-[#4F8EF7]" />} label="Education" />
+          <div className="gsap-section">
+            <SectionLabel icon={<FaGraduationCap className="text-[#4F8EF7]" />} label="Education" />
+          </div>
 
-          <div className="grid md:grid-cols-2 gap-6 mt-8">
+          <div className="grid md:grid-cols-2 gap-6 mt-8 gsap-stagger-container">
             {education.map((edu, i) => (
               <div
                 key={i}
-                className="group bg-white border border-gray-100 rounded-3xl p-8 shadow-sm hover:shadow-[0_16px_40px_rgba(79,142,247,0.1)] hover:-translate-y-1 hover:border-[#4F8EF7]/25 transition-all duration-400 relative overflow-hidden"
+                className="gsap-card group bg-white border border-gray-100 rounded-3xl p-8 shadow-sm hover:shadow-[0_16px_40px_rgba(79,142,247,0.1)] hover:-translate-y-1 hover:border-[#4F8EF7]/25 transition-all duration-400 relative overflow-hidden"
               >
                 <div
                   className="absolute top-0 left-0 w-full h-1 opacity-0 group-hover:opacity-100 transition-opacity"
@@ -198,12 +269,16 @@ const Certification = () => {
                     <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#4F8EF7] transition-colors leading-snug">
                       {edu.degree}
                     </h3>
-                    <span
-                      className="inline-block mt-2 px-3 py-1 rounded-full text-xs font-bold"
-                      style={{ background: edu.statusColor + '18', color: edu.statusColor }}
-                    >
-                      {edu.status}
-                    </span>
+                    <Chip 
+                      label={edu.status} 
+                      size="small" 
+                      sx={{ 
+                        mt: 1, 
+                        bgcolor: `${edu.statusColor}18`, 
+                        color: edu.statusColor, 
+                        fontWeight: 'bold' 
+                      }} 
+                    />
                   </div>
                 </div>
                 <p className="text-gray-500 text-sm leading-relaxed">{edu.desc}</p>
@@ -213,32 +288,91 @@ const Certification = () => {
         </div>
 
         {/* ================================================================= */}
-        {/* EXPERIENCE                                                          */}
+        {/* WORK EXPERIENCE                                                   */}
         {/* ================================================================= */}
-        <div>
-          <SectionLabel icon={<FaBriefcase className="text-[#A78BFA]" />} label="Internship Experience" />
+        <div className="mt-12">
+          <div className="gsap-section">
+            <SectionLabel icon={<FaBriefcase className="text-[#A78BFA]" />} label="Work Experience" />
+          </div>
 
-          <div className="mt-8 group bg-white border border-gray-100 rounded-3xl p-10 shadow-sm hover:shadow-[0_20px_50px_rgba(167,139,250,0.12)] hover:-translate-y-1 hover:border-[#A78BFA]/30 transition-all duration-500 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA] opacity-0 group-hover:opacity-100 transition-opacity" />
+          <div className="gsap-stagger-container">
+            <div className="mt-8 group bg-white border border-gray-100 rounded-3xl p-10 shadow-sm hover:shadow-[0_20px_50px_rgba(167,139,250,0.12)] hover:-translate-y-1 hover:border-[#A78BFA]/30 transition-all duration-500 relative overflow-hidden gsap-card">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA] opacity-0 group-hover:opacity-100 transition-opacity" />
+
+            <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900 group-hover:text-[#4F8EF7] transition-colors mb-1">
+                  Junior Web Developer
+                </h3>
+                <p className="text-[#A78BFA] font-semibold text-lg">Kenmerk Softwares Pvt. Ltd.</p>
+              </div>
+              <Chip 
+                label="Apr 2026 – Present"
+                sx={{
+                  bgcolor: '#A78BFA1A',
+                  color: '#A78BFA',
+                  fontWeight: 'bold',
+                }}
+              />
+            </div>
+
+            <ul className="space-y-3">
+              {[
+                "Developing and maintaining full-stack web applications using React.js, Next.js, Node.js, Express.js, TypeScript, and MongoDB.",
+                "Building responsive user interfaces and integrating RESTful APIs for production applications.",
+                "Collaborating with designers, developers, and QA teams in an Agile development environment.",
+                "Enhancing application performance, fixing bugs, and implementing new features based on client requirements.",
+                "Using Git, Firebase, and modern web technologies to deliver reliable and scalable solutions.",
+                "Participating in code reviews, testing, deployment, and ongoing maintenance of production systems."
+              ].map((point, i) => (
+                <li key={i} className="flex items-start gap-3 text-gray-600">
+                  <span
+                    className="mt-2 w-1.5 h-1.5 rounded-full flex-shrink-0"
+                    style={{ background: 'linear-gradient(135deg, #4F8EF7, #A78BFA)' }}
+                  />
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+        {/* ================================================================= */}
+        {/* INTERNSHIP EXPERIENCE                                             */}
+        {/* ================================================================= */}
+        <div className="mt-12">
+          <div className="gsap-section">
+            <SectionLabel icon={<FaBriefcase className="text-[#A78BFA]" />} label="Internship Experience" />
+          </div>
+
+          <div className="gsap-stagger-container">
+            <div className="mt-8 group bg-white border border-gray-100 rounded-3xl p-10 shadow-sm hover:shadow-[0_20px_50px_rgba(167,139,250,0.12)] hover:-translate-y-1 hover:border-[#A78BFA]/30 transition-all duration-500 relative overflow-hidden gsap-card">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA] opacity-0 group-hover:opacity-100 transition-opacity" />
 
             <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
               <div>
                 <h3 className="text-2xl font-bold text-gray-900 group-hover:text-[#4F8EF7] transition-colors mb-1">
                   Software Developer Intern
                 </h3>
-                <p className="text-[#A78BFA] font-semibold text-lg">Kenmerk Softwares Pvt Ltd</p>
+                <p className="text-[#A78BFA] font-semibold text-lg">Kenmerk Softwares Pvt. Ltd.</p>
               </div>
-              <span className="inline-block px-5 py-2 rounded-full bg-[#A78BFA]/10 text-[#A78BFA] text-sm font-bold whitespace-nowrap h-max">
-                Dec 2025 – Mar 2026
-              </span>
+              <Chip 
+                label="Dec 2025 – Mar 2026"
+                sx={{
+                  bgcolor: '#A78BFA1A',
+                  color: '#A78BFA',
+                  fontWeight: 'bold',
+                }}
+              />
             </div>
 
             <ul className="space-y-3 mb-6">
               {[
                 "Developed and maintained production-ready features using Node.js and React.js.",
-                "Collaborated in an agile, real-world development environment with structured sprints.",
+                "Collaborated in an Agile development environment with structured sprints.",
                 "Built and integrated RESTful APIs, improving application performance and reliability.",
-                "Contributed end-to-end to the Inventory Forecasting System — from UI to backend logic."
+                "Contributed end-to-end to the Inventory Forecasting System, from UI development to backend implementation."
               ].map((point, i) => (
                 <li key={i} className="flex items-start gap-3 text-gray-600">
                   <span
@@ -250,23 +384,30 @@ const Certification = () => {
               ))}
             </ul>
 
-            {/* Internship certificate image */}
-            <CertImageCard
-              src="/certs/kenmerk-internship.jpg"
-              title="Internship Certificate – Kenmerk Softwares Pvt Ltd"
-            />
+            {/* Internship certificate PDF */}
+            <a
+              href={KenmerkPDF}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-6 flex items-center justify-center gap-3 bg-[#F9FAFB] border border-gray-200 text-[#4F8EF7] font-bold px-6 py-4 rounded-2xl hover:bg-[#4F8EF7] hover:text-white transition-all shadow-sm group"
+            >
+              <FaExpand className="group-hover:scale-110 transition-transform" /> View Internship Certificate (PDF)
+            </a>
           </div>
         </div>
+      </div>
 
         {/* ================================================================= */}
         {/* CERTIFICATIONS TIMELINE                                             */}
         {/* ================================================================= */}
-        <div>
-          <SectionLabel icon={<FaCloud className="text-[#34D399]" />} label="Certifications" />
+        <div className="mt-12">
+          <div className="gsap-section">
+            <SectionLabel icon={<FaCloud className="text-[#34D399]" />} label="Certifications" />
+          </div>
 
-          <div className="relative border-l-2 border-[#4F8EF7]/25 ml-3 md:ml-6 space-y-10 pb-4 mt-8">
+          <div className="relative border-l-2 border-[#4F8EF7]/25 ml-3 md:ml-6 space-y-10 pb-4 mt-8 gsap-stagger-container">
             {certifications.map((cert, index) => (
-              <div key={index} className="relative pl-8 md:pl-12 group">
+              <div key={index} className="relative pl-8 md:pl-12 group gsap-card">
                 {/* Timeline dot */}
                 <div
                   className="absolute -left-[9px] top-6 w-4 h-4 rounded-full border-4 border-[#F9FAFB] group-hover:scale-150 transition-all duration-300 shadow-sm"
@@ -294,20 +435,44 @@ const Certification = () => {
                       </div>
                     </div>
                     <div className="flex flex-col items-start md:items-end gap-2 flex-shrink-0 md:pl-0">
-                      <span className="px-4 py-1.5 rounded-full bg-[#4F8EF7]/10 text-[#4F8EF7] text-sm font-semibold whitespace-nowrap">
-                        {cert.date}
-                      </span>
-                      <span className="text-xs font-bold uppercase tracking-wider text-[#A78BFA]">
-                        {cert.tag}
-                      </span>
+                      <Chip 
+                        label={cert.date} 
+                        sx={{ 
+                          bgcolor: 'rgba(79, 142, 247, 0.1)', 
+                          color: '#4F8EF7', 
+                          fontWeight: 600,
+                        }} 
+                      />
+                      <Chip 
+                        label={cert.tag} 
+                        size="small" 
+                        variant="outlined"
+                        sx={{ 
+                          color: '#A78BFA', 
+                          borderColor: '#A78BFA',
+                          fontWeight: 'bold',
+                          textTransform: 'uppercase'
+                        }} 
+                      />
                     </div>
                   </div>
 
                   <p className="text-gray-600 text-sm md:text-base leading-relaxed md:pl-16">{cert.desc}</p>
 
-                  {/* Certificate Image */}
+                  {/* Certificate Image or PDF */}
                   <div className="md:pl-16">
-                    <CertImageCard src={cert.certImage} title={cert.title} />
+                    {cert.certPDF ? (
+                      <a
+                        href={cert.certPDF}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-6 flex items-center justify-center gap-3 bg-[#F9FAFB] border border-gray-200 text-[#4F8EF7] font-bold px-6 py-4 rounded-2xl hover:bg-[#4F8EF7] hover:text-white transition-all shadow-sm group"
+                      >
+                        <FaExpand className="group-hover:scale-110 transition-transform" /> View Certificate (PDF)
+                      </a>
+                    ) : (
+                      <CertImageCard src={cert.certImage} title={cert.title} />
+                    )}
                   </div>
                 </div>
               </div>

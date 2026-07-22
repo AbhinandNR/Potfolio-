@@ -1,32 +1,64 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaLinkedin, FaGithub, FaGlobe, FaDownload } from "react-icons/fa";
+import ResumePDF from "../assets/ABHINAND_NR_Resume.pdf";
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Button from '@mui/material/Button';
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const Resume = () => {
+  const container = useRef();
+  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const handlePrint = () => {
-    window.print();
-  };
+  useGSAP(() => {
+    gsap.fromTo('.gsap-resume', 
+      { y: 50, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, scrollTrigger: { trigger: '.gsap-resume', start: 'top 90%' } }
+    );
+  }, { scope: container });
 
   return (
-    <div className="min-h-screen bg-gray-100 py-10 px-4 md:px-0 font-serif">
+    <div ref={container} className="min-h-screen bg-[#F9FAFB] py-10 px-4 md:px-0 font-serif relative overflow-hidden">
+      <div className="absolute top-20 right-10 w-96 h-96 bg-[#4F8EF7]/10 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute bottom-20 left-10 w-80 h-80 bg-[#A78BFA]/10 rounded-full blur-[100px] pointer-events-none"></div>
       {/* Action Bar (Hidden on Print) */}
       <div className="max-w-5xl mx-auto mb-6 flex justify-between items-center print:hidden">
         <p className="text-sm text-gray-500 font-sans">Professional Digital Resume</p>
-        <div className="flex gap-4">
-            <button
-            onClick={handlePrint}
-            className="flex items-center gap-2 bg-[#1a4b8c] text-white px-5 py-2 rounded-lg font-medium hover:bg-[#123666] transition-all shadow-md active:scale-95 font-sans"
+        <div className="flex gap-4 z-10">
+            <Button
+              href={ResumePDF}
+              download="ABHINAND_NR_Resume.pdf"
+              variant="contained"
+              startIcon={<FaDownload />}
+              sx={{
+                background: 'linear-gradient(to right, #4F8EF7, #A78BFA)',
+                color: 'white',
+                px: 3,
+                py: 1,
+                borderRadius: '8px',
+                textTransform: 'none',
+                fontWeight: 'bold',
+                fontFamily: 'sans-serif',
+                boxShadow: 2,
+                '&:hover': {
+                  boxShadow: 4,
+                  transform: 'scale(0.98)'
+                },
+                transition: 'all 0.2s'
+              }}
             >
-            <FaDownload /> Download PDF
-            </button>
+              Download PDF
+            </Button>
         </div>
       </div>
 
       {/* Resume Document */}
-      <div className="max-w-5xl mx-auto bg-white shadow-2xl overflow-hidden print:shadow-none print:w-full">
+      <div className="gsap-resume max-w-5xl mx-auto bg-white shadow-2xl overflow-hidden print:shadow-none print:w-full relative z-10 rounded-xl md:rounded-3xl border border-gray-100">
         
         {/* Header Section */}
         <div className="bg-[#1a4b8c] text-white p-8 md:p-12 text-center">

@@ -4,6 +4,13 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { FaAws, FaDocker, FaChevronDown, FaServer, FaShieldAlt, FaCode, FaFigma } from "react-icons/fa";
 import { SiKubernetes } from "react-icons/si";
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Button from '@mui/material/Button';
+import Chip from '@mui/material/Chip';
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const Home = () => {
   const navigate = useNavigate();
@@ -17,18 +24,22 @@ const Home = () => {
     });
   }, []);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("translate-y-0", "opacity-100");
-          entry.target.classList.remove("translate-y-10", "opacity-0");
+  useGSAP(() => {
+    const revealElements = gsap.utils.toArray('.reveal-on-scroll');
+    revealElements.forEach((el) => {
+      gsap.fromTo(el,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 85%',
+          }
         }
-      });
-    }, { threshold: 0.1 });
-    
-    document.querySelectorAll(".reveal-on-scroll").forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+      );
+    });
   }, []);
 
   return (
@@ -103,24 +114,56 @@ const Home = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4 pt-4 md:pt-6 justify-center md:justify-start z-20 px-4 md:px-0">
-              <button
+              <Button
+                variant="contained"
                 onClick={() => navigate("/projects")}
-                className="w-full sm:w-auto bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA] text-white px-8 py-3 rounded-xl font-medium shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                sx={{
+                  background: 'linear-gradient(to right, #4F8EF7, #A78BFA)',
+                  color: 'white',
+                  px: 4, py: 1.5,
+                  borderRadius: '12px',
+                  fontWeight: 'bold',
+                  textTransform: 'none',
+                  boxShadow: 2,
+                  '&:hover': { boxShadow: 4, transform: 'translateY(-2px)' },
+                  transition: 'all 0.3s'
+                }}
               >
                 View Projects
-              </button>
-              <button
+              </Button>
+              <Button
+                variant="outlined"
                 onClick={() => navigate("/resume")}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-[#1F2937] text-[#1F2937] bg-white px-8 py-3 rounded-xl font-medium hover:bg-[#1F2937] hover:text-white hover:-translate-y-1 shadow-sm transition-all duration-300"
+                sx={{
+                  borderColor: '#1F2937', color: '#1F2937',
+                  px: 4, py: 1.5,
+                  borderRadius: '12px',
+                  fontWeight: 'bold',
+                  textTransform: 'none',
+                  '&:hover': { bgcolor: '#1F2937', color: 'white', transform: 'translateY(-2px)' },
+                  transition: 'all 0.3s'
+                }}
               >
                 View Resume
-              </button>
-              <button
+              </Button>
+              <Button
+                variant="text"
                 onClick={() => navigate("/contact")}
-                className="w-full sm:w-auto bg-white/80 border border-gray-200 backdrop-blur-md text-gray-700 px-8 py-3 rounded-xl font-medium shadow-sm hover:shadow-md hover:bg-white hover:-translate-y-1 transition-all duration-300"
+                sx={{
+                  color: '#4B5563',
+                  px: 4, py: 1.5,
+                  borderRadius: '12px',
+                  fontWeight: 'bold',
+                  textTransform: 'none',
+                  bgcolor: 'rgba(255,255,255,0.8)',
+                  backdropFilter: 'blur(10px)',
+                  border: '1px solid #E5E7EB',
+                  '&:hover': { bgcolor: 'white', transform: 'translateY(-2px)', boxShadow: 1 },
+                  transition: 'all 0.3s'
+                }}
               >
                 Contact Me
-              </button>
+              </Button>
             </div>
           </div>
 
@@ -176,7 +219,7 @@ const Home = () => {
 
 
       {/* ================= PROJECT PREVIEW ================= */}
-      <section className="py-16 md:py-32 bg-[#F9FAFB] text-center border-b border-gray-100 relative reveal-on-scroll translate-y-10 opacity-0 transition-all duration-700 ease-out">
+      <section className="py-16 md:py-32 bg-[#F9FAFB] text-center border-b border-gray-100 relative reveal-on-scroll">
         <div className="absolute top-10 right-10 w-40 h-40 bg-[#34D399] rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob pointer-events-none"></div>
         <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
 
@@ -214,7 +257,7 @@ const Home = () => {
                   bg-white backdrop-blur-lg border border-gray-100 p-8 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)]
                   hover:shadow-[0_8px_30px_rgba(79,142,247,0.12)] hover:border-[#4F8EF7]/30 hover:-translate-y-2
                   transition-all duration-300 text-left flex flex-col h-full relative overflow-hidden group
-                  reveal-on-scroll translate-y-10 opacity-0
+                  reveal-on-scroll
                 "
               >
                 <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA] scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
@@ -254,12 +297,22 @@ const Home = () => {
 
           </div>
 
-          <button
+          <Button
+            variant="outlined"
             onClick={() => navigate("/projects")}
-            className="mt-16 bg-white border border-gray-200 text-gray-700 px-8 py-3 rounded-xl hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 shadow-sm hover:shadow-md"
+            sx={{
+              mt: 8,
+              borderColor: '#E5E7EB', color: '#374151',
+              bgcolor: 'white',
+              px: 4, py: 1.5,
+              borderRadius: '12px',
+              textTransform: 'none',
+              fontWeight: 'bold',
+              '&:hover': { bgcolor: '#F9FAFB', borderColor: '#D1D5DB' }
+            }}
           >
             See All Projects
-          </button>
+          </Button>
 
         </div>
       </section>
@@ -267,19 +320,29 @@ const Home = () => {
 
 
       {/* ================= CTA ================= */}
-      <section className="py-16 md:py-32 bg-white text-gray-900 text-center space-y-6 md:space-y-8 relative overflow-hidden reveal-on-scroll translate-y-10 opacity-0 transition-all duration-700 ease-out">
+      <section className="py-16 md:py-32 bg-white text-gray-900 text-center space-y-6 md:space-y-8 relative overflow-hidden reveal-on-scroll">
         <div className="absolute inset-0 bg-gradient-to-r from-[#4F8EF7]/5 to-[#A78BFA]/5 opacity-100 pointer-events-none"></div>
         <div className="relative z-10 px-6">
           <h2 className="text-3xl md:text-5xl font-extrabold mb-6 md:mb-8 tracking-tight max-w-4xl mx-auto">
             Have a project in mind? Let's build it together 🚀
           </h2>
 
-          <button
+          <Button
+            variant="contained"
             onClick={() => navigate("/contact")}
-            className="bg-[#1F2937] text-white px-10 py-4 rounded-xl font-semibold hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
+            sx={{
+              bgcolor: '#1F2937', color: 'white',
+              px: 5, py: 2,
+              borderRadius: '12px',
+              fontWeight: 'bold',
+              textTransform: 'none',
+              fontSize: '1.1rem',
+              '&:hover': { bgcolor: '#111827', transform: 'translateY(-2px)', boxShadow: 4 },
+              transition: 'all 0.3s'
+            }}
           >
             Get in Touch
-          </button>
+          </Button>
         </div>
       </section>
 

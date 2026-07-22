@@ -1,9 +1,29 @@
-import React from 'react'
+import React, { useRef } from 'react'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(useGSAP, ScrollTrigger)
 
 const About = () => {
+  const container = useRef()
+
+  useGSAP(() => {
+    gsap.fromTo('.gsap-heading', 
+      { y: 50, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, scrollTrigger: { trigger: '.gsap-heading', start: 'top 85%' } }
+    );
+    
+    gsap.fromTo('.gsap-card',
+      { y: 50, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, scrollTrigger: { trigger: '.gsap-stagger-container', start: 'top 85%' } }
+    );
+  }, { scope: container })
+
   return (
     <section
       id="about"
+      ref={container}
       className="
         py-20 md:py-32 px-4 md:px-6
         min-h-screen
@@ -18,15 +38,15 @@ const About = () => {
       <div className="max-w-5xl mx-auto text-center space-y-12 md:space-y-16 relative z-10">
 
         {/* Heading */}
-        <h2 className="text-4xl md:text-6xl font-extrabold text-[#1F2937] tracking-tight">
+        <h2 className="text-4xl md:text-6xl font-extrabold text-[#1F2937] tracking-tight gsap-heading">
           About <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA]">Me</span>
         </h2>
 
         {/* About Grid */}
-        <div className="grid lg:grid-cols-3 gap-8 text-left">
+        <div className="grid lg:grid-cols-3 gap-8 text-left gsap-stagger-container">
           
           {/* Main Copy */}
-          <div className="lg:col-span-2 backdrop-blur-2xl bg-white border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] rounded-3xl p-10 md:p-12 text-lg text-gray-600 leading-relaxed relative overflow-hidden group hover:border-[#4F8EF7]/30 transition-colors">
+          <div className="gsap-card lg:col-span-2 backdrop-blur-2xl bg-white border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] rounded-3xl p-10 md:p-12 text-lg text-gray-600 leading-relaxed relative overflow-hidden group hover:border-[#4F8EF7]/30 transition-colors">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA] opacity-0 group-hover:opacity-100 transition-opacity"></div>
             
             <h3 className="text-3xl font-bold text-gray-900 mb-6 group-hover:text-[#4F8EF7] transition-colors">Continuous Learner & Builder</h3>
@@ -43,15 +63,15 @@ const About = () => {
 
           {/* Stats Grid */}
           <div className="flex flex-col justify-between gap-6">
-            <div className="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm flex items-center gap-6 hover:-translate-y-1 hover:shadow-md transition-all duration-300 border-l-4 border-l-[#4F8EF7]">
+            <div className="gsap-card bg-white border border-gray-100 rounded-3xl p-8 shadow-sm flex items-center gap-6 hover:-translate-y-1 hover:shadow-md transition-all duration-300 border-l-4 border-l-[#4F8EF7]">
               <div><span className="text-4xl text-[#4F8EF7] font-extrabold">20+</span></div>
               <div><span className="block font-bold text-gray-800">Projects Built</span><span className="text-sm text-gray-500">End-to-End</span></div>
             </div>
-            <div className="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm flex items-center gap-6 hover:-translate-y-1 hover:shadow-md transition-all duration-300 border-l-4 border-l-[#A78BFA]">
+            <div className="gsap-card bg-white border border-gray-100 rounded-3xl p-8 shadow-sm flex items-center gap-6 hover:-translate-y-1 hover:shadow-md transition-all duration-300 border-l-4 border-l-[#A78BFA]">
               <div><span className="text-4xl text-[#A78BFA] font-extrabold">12+</span></div>
               <div><span className="block font-bold text-gray-800">Tech Mastered</span><span className="text-sm text-gray-500">Advanced Topics</span></div>
             </div>
-            <div className="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm flex items-center gap-6 hover:-translate-y-1 hover:shadow-md transition-all duration-300 border-l-4 border-l-[#34D399]">
+            <div className="gsap-card bg-white border border-gray-100 rounded-3xl p-8 shadow-sm flex items-center gap-6 hover:-translate-y-1 hover:shadow-md transition-all duration-300 border-l-4 border-l-[#34D399]">
               <div><span className="text-4xl text-[#34D399] font-extrabold">3+</span></div>
               <div><span className="block font-bold text-gray-800">Certifications</span><span className="text-sm text-gray-500">Industry Validated</span></div>
             </div>

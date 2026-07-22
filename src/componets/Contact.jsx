@@ -1,9 +1,41 @@
-import React from 'react'
+import React, { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Button from '@mui/material/Button';
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const Contact = () => {
+  const container = useRef();
+  
+  useGSAP(() => {
+    gsap.fromTo('.gsap-heading', 
+      { y: 50, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, scrollTrigger: { trigger: '.gsap-heading', start: 'top 85%' } }
+    );
+    
+    gsap.fromTo('.gsap-form',
+      { y: 50, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, delay: 0.2, scrollTrigger: { trigger: '.gsap-form', start: 'top 85%' } }
+    );
+  }, { scope: container });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const message = e.target.message.value;
+    
+    const subject = encodeURIComponent(`Portfolio Query from ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+    
+    window.location.href = `mailto:abhinandnr1@gmail.com?subject=${subject}&body=${body}`;
+  };
+
   return (
     <section
       id="contacts"
+      ref={container}
       className="
         py-12 md:py-20 px-4 md:px-6
         bg-white
@@ -17,17 +49,19 @@ const Contact = () => {
       <div className="max-w-5xl mx-auto text-center relative z-10">
 
         {/* Heading */}
-        <h2 className="text-3xl md:text-5xl font-extrabold text-[#1F2937] mb-4 tracking-tight">
+        <h2 className="text-3xl md:text-5xl font-extrabold text-[#1F2937] mb-4 tracking-tight gsap-heading">
           Let’s Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA]">Amazing</span>
         </h2>
 
-        <p className="text-gray-500 text-sm md:text-base mb-8 md:mb-12 max-w-2xl mx-auto">
+        <p className="text-gray-500 text-sm md:text-base mb-8 md:mb-12 max-w-2xl mx-auto gsap-heading">
           Got a project idea or job opportunity? Feel free to reach out. I'm currently open for new opportunities.
         </p>
 
         {/* Glass Card */}
         <form
+          onSubmit={handleSubmit}
           className="
+            gsap-form
             backdrop-blur-xl
             bg-white
             border border-gray-100
@@ -44,6 +78,8 @@ const Contact = () => {
 
             <input
               type="text"
+              name="name"
+              required
               placeholder="Your Name"
               className="
                 w-full
@@ -58,6 +94,8 @@ const Contact = () => {
 
             <input
               type="email"
+              name="email"
+              required
               placeholder="Your Email"
               className="
                 w-full
@@ -74,6 +112,8 @@ const Contact = () => {
 
           {/* Message */}
           <textarea
+            name="message"
+            required
             rows="5"
             placeholder="Your Message..."
             className="
@@ -89,22 +129,28 @@ const Contact = () => {
 
           {/* Button */}
           <div className="flex justify-center mt-6">
-            <button
+            <Button
               type="submit"
-              className="
-                w-full md:w-auto px-8 md:px-12
-                bg-gradient-to-r from-[#4F8EF7] to-[#A78BFA]
-                text-white font-medium
-                py-3
-                rounded-xl
-                text-base
-                hover:shadow-[0_8px_25px_rgba(167,139,250,0.3)]
-                hover:-translate-y-1
-                transition-all duration-300
-              "
+              variant="contained"
+              sx={{
+                background: 'linear-gradient(to right, #4F8EF7, #A78BFA)',
+                color: 'white',
+                px: { xs: 4, md: 6 },
+                py: 1.5,
+                borderRadius: '12px',
+                textTransform: 'none',
+                fontWeight: 'bold',
+                fontSize: '1rem',
+                boxShadow: 2,
+                '&:hover': {
+                  boxShadow: 6,
+                  transform: 'translateY(-2px)'
+                },
+                transition: 'all 0.3s'
+              }}
             >
               Send Message
-            </button>
+            </Button>
           </div>
 
         </form>
