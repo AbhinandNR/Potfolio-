@@ -8,7 +8,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Button from '@mui/material/Button';
-import Chip from '@mui/material/Chip';
+
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
