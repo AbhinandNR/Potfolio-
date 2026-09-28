@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import { FaAws, FaDocker, FaChevronDown, FaServer, FaShieldAlt, FaCode, FaFigma } from "react-icons/fa";
+import { FaAws, FaDocker, FaChevronDown, FaServer, FaShieldAlt, FaCode, FaFigma, FaLaptopCode } from "react-icons/fa";
 import { SiKubernetes } from "react-icons/si";
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -106,11 +106,11 @@ const Home = () => {
             </h1>
 
             <p className="text-base md:text-2xl text-gray-600 font-medium tracking-wide">
-              Junior Web Developer | Tech Enthusiast
+          Full Stack Developer | Aspiring Computer Vision Engineer
             </p>
 
             <p className="text-gray-500 text-sm md:text-lg max-w-2xl mx-auto md:mx-0 leading-relaxed px-2 md:px-0">
-              Hands-on experience in Node.js, React.js, and modern development practices with real-world internship exposure.
+              Passionate full-stack developer with hands-on experience in building scalable web applications. Proficient in Node.js, React.js, and modern development practices with real-world internship exposure.
             </p>
 
             <div className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4 pt-4 md:pt-6 justify-center md:justify-start z-20 px-4 md:px-0">
@@ -185,9 +185,10 @@ const Home = () => {
         </div>
 
         {/* Instant Impact Strip */}
-        <div className="relative md:absolute bottom-10 md:bottom-16 left-0 md:left-1/2 transform md:-translate-x-1/2 w-full max-w-5xl px-4 md:px-6 z-20 mt-16 md:mt-0">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="relative md:absolute bottom-10 md:bottom-16 left-0 md:left-1/2 transform md:-translate-x-1/2 w-full max-w-6xl px-4 md:px-6 z-20 mt-16 md:mt-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 xl:gap-4">
             {[
+              { icon: <FaLaptopCode className="text-[#61DAFB] text-lg" />, bg: "#61DAFB", label: "Full Stack Developer", sub: "React, Node.js & APIs" },
               { icon: <FaFigma className="text-[#F24E1E] text-lg" />, bg: "#F24E1E", label: "UI/UX Designer", sub: "Figma Specialist" },
               { icon: <FaAws className="text-[#FF9900] text-lg" />, bg: "#FF9900", label: "AWS Cloud Foundations", sub: "Amazon Web Services" },
               { icon: <FaCode className="text-[#4F8EF7] text-lg" />, bg: "#4F8EF7", label: "DevOps Fundamentals", sub: "IBM · Mar 2026" },

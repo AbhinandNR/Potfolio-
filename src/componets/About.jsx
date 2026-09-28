@@ -51,10 +51,10 @@ const About = () => {
             
             <h3 className="text-3xl font-bold text-gray-900 mb-6 group-hover:text-[#4F8EF7] transition-colors">Continuous Learner & Builder</h3>
             <p className="mb-4">
-              I am an MCA graduate and full-stack developer passionate about building scalable, high-performance web applications. During my internship at Kenmerk Softwares, I gained hands-on experience designing intuitive user interfaces and robust APIs.
+              I am an MCA graduate and full-stack developer passionate about building scalable, high-performance web applications. I have hands-on experience across the entire web development lifecycle — from initial requirement analysis and UI/UX design in Figma to full-stack implementation, comprehensive testing, and live client demonstrations of working websites.
             </p>
             <p className="mb-4">
-              My technical journey bridges the gap between theoretical computer science and practical software engineering. By mastering Node.js, React, and cloud-native fundamentals, I strive to write clean code that delivers real-world business value.
+              My technical journey bridges the gap between theoretical computer science and practical software engineering. By mastering Node.js, React, and modern web frameworks, I focus on delivering clean code, intuitive user experiences, and web solutions that provide real-world business value.
             </p>
             <p className="font-medium text-gray-800 mt-8 border-l-4 border-[#34D399] pl-6 py-2 italic bg-gray-50 rounded-r-xl">
               "Career Objective: To join a forward-thinking engineering team where I can apply my full-stack skills, foster innovation, and rapidly grow into a capable Software Engineer."
@@ -85,3 +85,5 @@ const About = () => {
 }
 
 export default About
+
+
